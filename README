@@ -1,0 +1,60 @@
+README
+=====
+fork of http://github.com/github/jquery-relatize_date
+
+
+Usage
+======
+
+`<code>`
+	<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/combo?3.0.0/build/cssreset/reset-min.css&3.0.0/build/cssfonts/fonts-min.css&3.0.0/build/cssgrids/grids-min.css&3.0.0/build/cssbase/base-min.css">
+
+	</head>
+		<body>
+			<h1>Time</h1>
+			<ul>
+				<li><abbr class='showTime' title='2009/11/27 11:00:00 -0300'></abbr> Only time</li>
+			</ul>
+
+			<h1>Future</h1>
+			<ul>
+				<li><abbr class='relatize' title='2009/11/22 11:00:00 -0300'></abbr> in the future</li>
+			</ul>
+
+
+			<h1>Past</h1>
+			<ul>
+				<li><abbr class='relatize' title='2009/11/10 11:00:00 -0300'></abbr> in the past</li>
+			</ul>
+
+
+			<script type="text/javascript" src="http://yui.yahooapis.com/3.0.0/build/yui/yui-min.js"></script>
+			<script type="text/javascript" src="yui.relatize_date.js"></script>
+
+		<script type="text/javascript">
+		YUI({combine: true, timeout: 10000}).use("node", "event", "project-date",function (Y) {
+			var MyApp = {
+			    NAME : 'Demo',
+				changedates: function(){
+					Y.date.showTime('abbr.showTime');				
+					Y.date.relatize('abbr.relatize');
+				}
+			};
+
+			Y.on('domready',function () {
+			    MyApp.changedates();
+			},'#init');
+
+			// expose the example structure
+			YUI.example = { MyApp : MyApp };
+
+			});
+
+		</script>		
+		</body>
+	</html>
+
+`</code>`
+

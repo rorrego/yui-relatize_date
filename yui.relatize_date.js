@@ -44,7 +44,7 @@ YUI.add('project-date', function(Y){
 	      })
 	    },
 	    distanceOfTimeInWords: function(fromTime, toTime, includeTime) {
-		  if (fromTime < toTime){
+		  if (fromTime.getTime() < toTime.getTime()){
 	      	var delta = parseInt((toTime.getTime() - fromTime.getTime()) / 1000);
 			return Y.date.distanceInThePast(fromTime, toTime, delta);
 		  }else{
@@ -55,17 +55,17 @@ YUI.add('project-date', function(Y){
 	
 		distanceInThePast: function(fromTime, toTime, delta, includeTime){
 	      if (delta < 60) {
-	          return 'en menos de un minuto';
+	          return 'hace menos de un minuto';
 	      } else if (delta < 120) {
-	          return 'en un minuto más';
+	          return 'hace un par de minutos';
 	      } else if (delta < (45*60)) {
-	          return 'en ' + (parseInt(delta / 60)).toString() + ' minutos mas';
+	          return 'hace ' + (parseInt(delta / 60)).toString() + ' minutos';
 	      } else if (delta < (120*60)) {
-	          return 'en una hora más';
+	          return 'cerca de una hora atr&aacute;s';
 	      } else if (delta < (24*60*60)) {
-	          return  'en ' + (parseInt(delta / 3600)).toString() + ' horas más';
+	          return  (parseInt(delta / 3600)).toString() + ' horas atr&aacute;s';
 	      } else if (delta < (48*60*60)) {
-	          return 'mañana';
+	          return 'ayer';
 	      } else {
 	        var days = (parseInt(delta / 86400)).toString();
 	        if (days < 5) {
@@ -73,23 +73,23 @@ YUI.add('project-date', function(Y){
 	          if (includeTime) fmt += ' %I:%M %p'
 	          return Y.date.strftime(fromTime, fmt);
 	        } else {
-	          return "en " + days + " dias más"
+	          return  days + " dias atr&aacute;s"
 	        }
 	      }			
 		},
 		distanceInTheFuture: function(fromTime, toTime, delta, includeTime){
 	      if (delta < 60) {
-	          return 'hace menos de un minuto';
+	          return 'en menos de un minuto m&aacute;';
 	      } else if (delta < 120) {
-	          return 'hace u1 minuto ';
+	          return 'en un minuto ';
 	      } else if (delta < (45*60)) {
-	          return (parseInt(delta / 60)).toString() + ' minutos atras';
+	          return 'en' + (parseInt(delta / 60)).toString() + ' minutos m&aacute;s';
 	      } else if (delta < (120*60)) {
-	          return 'una hora atras';
+	          return 'en una hora m&aacute;s';
 	      } else if (delta < (24*60*60)) {
-	          return  (parseInt(delta / 3600)).toString() + ' horas atras';
+	          return  'en ' + (parseInt(delta / 3600)).toString() + ' horas m&aacute;s';
 	      } else if (delta < (48*60*60)) {
-	          return '1 día atras';
+	          return 'ma&ntilde;ana';
 	      } else {
 	        var days = (parseInt(delta / 86400)).toString();
 	        if (days > 5) {
@@ -97,7 +97,7 @@ YUI.add('project-date', function(Y){
 	          if (includeTime) fmt += ' %I:%M %p'
 	          return Y.date.strftime(fromTime, fmt);
 	        } else {
-	          return days + " dias atras"
+	          return days + " dias m&aacute;s"
 	        }
 	      }						
 		},
